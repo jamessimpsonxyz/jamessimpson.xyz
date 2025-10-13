@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>James Simpson</title>
+  <meta name="description" content="James Simpson — founder, investor, writer. Exploring the future of ownership, privacy, and technology.">
+  <meta property="og:title" content="James Simpson">
+  <meta property="og:description" content="Founder, investor, writer. Exploring the future of ownership, privacy, and technology.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>J</text></svg>">
+  <style>
+    :root{
+      --bg: #ffffff;
+      --fg: #0a0a0a;
+      --muted:#666;
+      --link:#0b57d0;
+      --border:#e6e6e6;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0b0b;
+        --fg:#f2f2f2;
+        --muted:#a0a0a0;
+        --link:#9bbcff;
+        --border:#1f1f1f;
+      }
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{
+      max-width: 720px;
+      padding: 6rem 1.25rem 4rem;
+      margin: 0 auto;
+    }
+    h1{
+      font-size: clamp(32px, 6vw, 48px);
+      line-height:1.1;
+      margin: 0 0 0.5rem;
+      letter-spacing:-0.02em;
+    }
+    .tag{
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    a{
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid color-mix(in oklab, var(--link) 60%, transparent);
+    }
+    a:hover{ border-bottom-color: currentColor; }
+    section{ margin: 2.5rem 0; }
+    h2{
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+    }
+    ul{ list-style: none; padding: 0; margin: 0; }
+    li{ margin: 0.25rem 0; }
+    .muted{ color: var(--muted); }
+    footer{
+      margin-top: 3rem;
+      padding-top:1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .inline-list a{ margin-right: 0.75rem; }
+    .now{ margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap" itemscope itemtype="https://schema.org/Person">
+    <h1 itemprop="name">James Simpson</h1>
+    <p class="tag">Founder, investor, writer. Exploring the future of ownership, privacy, and technology.</p>
+
+    <section>
+      <h2>About</h2>
+      <p>I founded and sold <em>mStable</em>, an early DeFi protocol built in Berlin. Since then I’ve invested at seed in projects such as Morpho, Maple, and Biconomy, and worked closely with technical founders on product, hiring, and go‑to‑market.</p>
+      <p>Currently based in Paris, completing a master’s at <em>Sciences Po</em> and contributing to <em>UNESCO</em> work on AI and society.</p>
+    </section>
+
+    <section>
+      <h2>Selected Work</h2>
+      <ul>
+        <li>Seed investor &amp; contributor to <strong>Morpho</strong> (worked with Francesco Agosti; placed Head of BD)</li>
+        <li>Founder &amp; CEO, <strong>mStable</strong> (acquired)</li>
+        <li>Research &amp; writing on AI ethics and governance (UNESCO, Sciences Po)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Writing</h2>
+      <ul>
+        <li><a href="#" rel="noopener">One Hundred Years of Sacrifice — Spykman Centre</a></li>
+        <li><a href="#" rel="noopener">Restraint in War — Essays on Ethics &amp; Security</a></li>
+        <li><a href="#" rel="noopener">Borderland — Notes on Technology &amp; Society</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p class="inline-list"><a href="mailto:hello@simmo.xyz">hello@simmo.xyz</a> · <a href="#" rel="me">X</a> · <a href="#" rel="me">Farcaster</a></p>
+      <p class="muted now">Paris · New York (E‑3 eligible)</p>
+    </section>
+
+    <footer>
+      <div class="muted">“Technology is only moral when it expands human agency.”</div>
+    </footer>
+  </main>
+</body>
+</html>
