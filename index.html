@@ -3,166 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>James Simpson</title>
   <meta name="description" content="James Simpson — builder and investor in crypto. Writing on technology, geopolitics, and the shifting architecture of global power.">
+
+  <!-- Open Graph / Twitter (non-visible polish for sharing) -->
   <meta property="og:title" content="James Simpson">
   <meta property="og:description" content="Builder and investor in crypto. Writing on technology, geopolitics, and global power.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://jamessimpson.xyz/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://jamessimpson.xyz/">
+
+  <!-- Color scheme and favicon -->
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>J</text></svg>">
 
-  <style>
-    /* ---- Design tokens --------------------------------------------------- */
-    :root{
-      --bg:        #ffffff;
-      --bg-soft:   #fbfbfb;
-      --fg:        #0b0b0b;
-      --muted:     #666;
-      --border:    #e8e8e8;
-      --link:      #0b57d0;
-      --link-underline: color-mix(in oklab, var(--link) 60%, transparent);
-      --radius:    18px;
+  <!-- Professional typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 
-      --maxw:      68ch;      /* comfortable measure for reading */
-      --lh:        1.65;      /* base line-height */
-      --space-1:   .5rem;
-      --space-2:   1rem;
-      --space-3:   1.75rem;
-      --space-4:   2.5rem;
-      --space-5:   4rem;
+  <style>
+    /* ---------------- Design tokens ---------------- */
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#fbfbfb;
+      --fg:#0a0a0a;
+      --muted:#666;
+      --link:#0b57d0;
+      --border:#e6e6e6;
+
+      --maxw:68ch;            /* comfortable reading measure */
+      --lh:1.65;              /* base line-height */
+      --r:16px;               /* card radius */
+      --s1:.5rem; --s2:1rem; --s3:1.75rem; --s4:2.5rem; --s5:4rem;
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:        #0b0b0b;
-        --bg-soft:   #0f0f10;
-        --fg:        #f2f2f2;
-        --muted:     #a0a0a0;
-        --border:    #1f1f1f;
-        --link:      #9bbcff;
-        --link-underline: color-mix(in oklab, var(--link) 55%, transparent);
+        --bg:#0b0b0b;
+        --bg-soft:#101114;
+        --fg:#f2f2f2;
+        --muted:#a0a0a0;
+        --link:#9bbcff;
+        --border:#1f1f1f;
       }
     }
 
-    /* ---- Base ------------------------------------------------------------ */
+    /* ---------------- Base ---------------- */
     html,body{height:100%}
     body{
       margin:0;
       background:
-        radial-gradient(1200px 700px at 70% -100px, color-mix(in oklab, var(--link) 6%, transparent), transparent),
+        radial-gradient(1200px 700px at 75% -120px, color-mix(in oklab, var(--link) 6%, transparent), transparent),
         var(--bg);
       color:var(--fg);
-      font: 17px/var(--lh) ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
+      font:16.75px/var(--lh) "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
     }
     .wrap{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: min(8vh, var(--space-5)) var(--space-2) var(--space-5);
+      max-width:var(--maxw);
+      padding: min(10vh,var(--s5)) var(--s2) var(--s5);
+      margin:0 auto;
     }
 
-    /* ---- Typography ------------------------------------------------------ */
+    /* ---------------- Type ---------------- */
     h1{
-      font-size: clamp(36px, 6vw, 56px);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-2);
+      font-size:clamp(36px,6vw,56px);
+      line-height:1.12;
+      margin:0 0 var(--s2);
+      letter-spacing:-0.02em;
+      font-weight:700;
     }
     h2{
-      font-size: .95rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: var(--space-4) 0 var(--space-2);
+      font-size:.95rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:var(--s4) 0 var(--s2);
+      font-weight:600;
     }
-    p{ margin: 0 0 var(--space-2); }
-    em{ font-style: italic; }
+    p{ margin:0 0 var(--s2); }
+    em{ font-style:italic; }
 
-    /* ---- Links & focus --------------------------------------------------- */
+    /* ---------------- Links ---------------- */
     a{
-      color: var(--link);
-      text-decoration: underline;
-      text-decoration-color: var(--link-underline);
-      text-underline-offset: 2px;
-      text-decoration-thickness: .08em;
+      color:var(--link);
+      text-decoration:underline;
+      text-decoration-color: color-mix(in oklab, var(--link) 55%, transparent);
+      text-underline-offset:2px;
+      text-decoration-thickness:.08em;
       transition: text-decoration-color .15s ease, color .15s ease;
     }
     a:hover{ text-decoration-color: currentColor; }
     a:focus-visible{
-      outline: 2px solid var(--link);
-      outline-offset: 2px;
-      border-radius: 4px;
+      outline:2px solid var(--link);
+      outline-offset:2px;
+      border-radius:4px;
     }
 
-    /* ---- Lists / chips --------------------------------------------------- */
-    .inline-list{
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem 1rem;
+    /* ---------------- Layout rhythm ---------------- */
+    section{ margin:var(--s3) 0; }
+    /* subtle dividers without adding visible text */
+    section + section{
+      padding-top:var(--s4);
+      border-top:1px solid var(--border);
     }
 
-    /* ---- Cards for project items ---------------------------------------- */
-    .card{
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: var(--space-2);
-      margin: var(--space-2) 0;
-    }
-    .card strong a{ text-decoration: none; }
-    .card strong a:hover{ text-decoration: underline; }
+    /* ---------------- Inline lists / chips ---------------- */
+    .inline-list{ display:flex; flex-wrap:wrap; gap:.6rem 1rem; }
+    ul{ list-style:none; padding:0; margin:0; }
+    li{ margin:var(--s2) 0; }
 
-    /* ---- Section dividers ------------------------------------------------ */
-    .divider{
-      height:1px; background: var(--border);
-      margin: var(--space-4) 0;
-      border-radius: 1px;
+    /* ---------------- Project cards ---------------- */
+    /* Turn project items into clean cards without changing copy */
+    #projects ul{ margin-top:var(--s2); }
+    #projects li{
+      background:var(--bg-soft);
+      border:1px solid var(--border);
+      border-radius:var(--r);
+      padding:var(--s2);
     }
+    #projects li strong a{ text-decoration:none; }
+    #projects li strong a:hover{ text-decoration:underline; }
 
-    /* ---- Footer ---------------------------------------------------------- */
+    /* ---------------- Footer ---------------- */
+    .muted{ color:var(--muted); }
     footer{
-      margin-top: var(--space-5);
-      padding-top: var(--space-2);
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .95rem;
-      display:flex; justify-content: space-between; gap:1rem; flex-wrap:wrap;
+      margin-top:var(--s5);
+      padding-top:var(--s2);
+      border-top:1px solid var(--border);
+      font-size:.95rem;
+      color:var(--muted);
+      display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
     }
 
-    /* ---- Motion preferences --------------------------------------------- */
-    @media (prefers-reduced-motion: reduce){
-      *{ transition: none !important; }
-    }
+    /* Motion preference */
+    @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
 
-    /* ---- Small nicety for very wide screens ----------------------------- */
+    /* Slightly more generous top spacing on wide screens */
     @media (min-width: 1100px){
-      .wrap{ padding-top: 12vh; }
+      .wrap{ padding-top: 14vh; }
     }
   </style>
 </head>
-
 <body>
-  <a href="#content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
-
-  <main id="content" class="wrap" itemscope itemtype="https://schema.org/Person">
-    <header>
-      <h1 itemprop="name">James Simpson</h1>
-      <p style="margin-top:-.25rem;color:var(--muted)">Builder &amp; investor in crypto. Writing on technology, geopolitics, and power.</p>
-    </header>
+  <main class="wrap" itemscope itemtype="https://schema.org/Person">
+    <h1 itemprop="name">James Simpson</h1>
 
     <section aria-labelledby="intro">
-      <p><strong>I build and invest in technologies that expand freedom and trust.</strong></p>
-      <p>I’m fascinated by how systems of value and ownership evolve. I believe crypto can make the internet and finance more private, sovereign, transparent, and inclusive.</p>
-      <p>I’m based in Paris, where I completed a master’s in International Security at <em>Sciences&nbsp;Po</em> and worked with <em>UNESCO</em> on AI bias. I also write with the <em>Spykman Centre</em> on geopolitics, technology, and the shifting architecture of global power.</p>
-      <p>Previously I founded and sold <em>mStable</em>, an early DeFi protocol built in Berlin, and have since invested in 20+ early-stage ventures across crypto and frontier tech.</p>
+      <p><strong>Hi, I’m James — I’m a builder and investor in crypto.</strong></p>
+      <p>I’m fascinated by how systems of value and ownership evolve, and how technology can expand freedom, creativity, and trust in the digital age. I believe crypto can make the internet and finance more private, sovereign, transparent, and inclusive.</p>
+      <p>I’m currently based in Paris, where I completed a master’s in International Security at <em>Sciences Po</em>. My studies focused on conflict and war, and I spent six months with <em>UNESCO</em> researching AI bias. I also contribute to the <em>Spykman Centre</em>, where I write on geopolitics, technology, and the shifting architecture of global power.</p>
+      <p>Previously, I founded and sold <em>mStable</em>, an early DeFi protocol built in Berlin, and have since invested in over twenty early-stage ventures across crypto and frontier technology.</p>
       <p>Outside of work, I love acting and the mountains.</p>
     </section>
 
-    <div class="divider" role="separator" aria-hidden="true"></div>
-
     <section aria-labelledby="investments">
       <h2 id="investments">Select Investments</h2>
-      <p class="inline-list" style="margin:0">
+      <p class="inline-list">
         <a href="https://www.morpho.org" target="_blank" rel="noopener">Morpho</a>
         <a href="https://chaoslabs.xyz" target="_blank" rel="noopener">Chaos Labs</a>
         <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a>
@@ -176,61 +175,13 @@
       </p>
     </section>
 
-    <section aria-labelledby="projects">
+    <section aria-labelledby="projects" id="projects">
       <h2 id="projects">Projects</h2>
-
-      <article class="card">
-        <p>
+      <ul>
+        <li>
           <strong><a href="https://fragosti.com/projects/split/" target="_blank" rel="noopener">Split</a></strong> —
           A protocol for splitting tokens into constituent components. Born from conversations with Francesco Agosti, Richard Galvin, and Alex Erikstrup that became a whitepaper, a prototype, and a usable product. The MVP was built during the three-week ETHGlobal hackathon and won the Compound sponsor prize.
-        </p>
-      </article>
-
-      <article class="card">
-        <p>
+        </li>
+        <li>
           <strong><a href="https://www.mstable.com/" target="_blank" rel="noopener">mStable</a></strong> —
-          Conceived at Apollo Capital with Henrik Andersson to address fragmentation and risk in stablecoins. Built products to unify stable assets, generate yield, and enhance systemic resilience. Acquired via a community-led decentralised auction; now continues under
-          <a href="https://www.dhedge.org/" target="_blank" rel="noopener">dHEDGE</a>, building on
-          <a href="https://pendle.finance/" target="_blank" rel="noopener">Pendle</a>.
-        </p>
-      </article>
-    </section>
-
-    <section aria-labelledby="writing">
-      <h2 id="writing">Writing &amp; Research</h2>
-      <p>I write about the social and geopolitical implications of technology, the ethics of innovation, and the shifting landscape of global power. Recent work touches on China’s strategic culture, the moral logic of restraint in war, and how U.S. foreign policy practices feed back into domestic democracy.</p>
-      <p class="inline-list">
-        <!-- Add real links when ready -->
-        <a href="#" aria-disabled="true">On AI &amp; society (soon)</a>
-        <a href="#" aria-disabled="true">Restraint in War (soon)</a>
-        <a href="#" aria-disabled="true">China’s Grand Strategy (soon)</a>
-      </p>
-    </section>
-
-    <section aria-labelledby="contact">
-      <h2 id="contact">Contact</h2>
-      <p class="inline-list">
-        <a href="mailto:hello@jamessimpson.xyz" itemprop="email">hello@jamessimpson.xyz</a>
-        <a href="https://www.linkedin.com/in/james-simpson-659ba02a7/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://x.com/Quixoticsky" target="_blank" rel="noopener">X</a>
-        <a href="https://substack.com/@byhenryshaw" target="_blank" rel="noopener">Substack</a>
-      </p>
-    </section>
-
-    <footer>
-      <span>© <span id="year"></span> James Simpson</span>
-      <span style="color:var(--muted)">Built with clean HTML &amp; CSS.</span>
-    </footer>
-  </main>
-
-  <script>
-    // Footer year & small enhancement for disabled placeholders
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('[aria-disabled="true"]').forEach(a=>{
-      a.style.pointerEvents='none';
-      a.style.opacity='.6';
-      a.style.textDecoration='none';
-    });
-  </script>
-</body>
-</html>
+          An early DeFi protocol conceived at Apollo Capital with Henrik Andersson to address fragmentation and risk in stablecoins. Built products to unify stable assets, generate yield, and enhance systemic resilience. Acquired via a community-led decentralised auction; now contin
