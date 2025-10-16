@@ -10,140 +10,227 @@
   <meta property="og:type" content="website">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>J</text></svg>">
+
   <style>
+    /* ---- Design tokens --------------------------------------------------- */
     :root{
-      --bg:#ffffff;
-      --fg:#0a0a0a;
-      --muted:#666;
-      --link:#0b57d0;
-      --border:#e6e6e6;
+      --bg:        #ffffff;
+      --bg-soft:   #fbfbfb;
+      --fg:        #0b0b0b;
+      --muted:     #666;
+      --border:    #e8e8e8;
+      --link:      #0b57d0;
+      --link-underline: color-mix(in oklab, var(--link) 60%, transparent);
+      --radius:    18px;
+
+      --maxw:      68ch;      /* comfortable measure for reading */
+      --lh:        1.65;      /* base line-height */
+      --space-1:   .5rem;
+      --space-2:   1rem;
+      --space-3:   1.75rem;
+      --space-4:   2.5rem;
+      --space-5:   4rem;
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:#0b0b0b;
-        --fg:#f2f2f2;
-        --muted:#a0a0a0;
-        --link:#9bbcff;
-        --border:#1f1f1f;
+        --bg:        #0b0b0b;
+        --bg-soft:   #0f0f10;
+        --fg:        #f2f2f2;
+        --muted:     #a0a0a0;
+        --border:    #1f1f1f;
+        --link:      #9bbcff;
+        --link-underline: color-mix(in oklab, var(--link) 55%, transparent);
       }
     }
+
+    /* ---- Base ------------------------------------------------------------ */
     html,body{height:100%}
     body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 700px at 70% -100px, color-mix(in oklab, var(--link) 6%, transparent), transparent),
+        var(--bg);
       color:var(--fg);
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
-      text-rendering:optimizeLegibility;
-      -webkit-font-smoothing:antialiased;
+      font: 17px/var(--lh) ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
     .wrap{
-      max-width:720px;
-      padding:6rem 1.25rem 4rem;
-      margin:0 auto;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: min(8vh, var(--space-5)) var(--space-2) var(--space-5);
     }
+
+    /* ---- Typography ------------------------------------------------------ */
     h1{
-      font-size:clamp(32px,6vw,48px);
-      line-height:1.1;
-      margin:0 0 0.5rem;
-      letter-spacing:-0.02em;
+      font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-2);
     }
-    .tag{ color:var(--muted); margin-bottom:2rem; }
-    a{
-      color:var(--link);
-      text-decoration:none;
-      border-bottom:1px solid color-mix(in oklab, var(--link) 60%, transparent);
-    }
-    a:hover{ border-bottom-color:currentColor; }
-    section{ margin:2.5rem 0; }
     h2{
-      font-size:0.9rem;
-      letter-spacing:0.1em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 0.75rem;
+      font-size: .95rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: var(--space-4) 0 var(--space-2);
     }
-    ul{ list-style:none; padding:0; margin:0; }
-    li{ margin:0.25rem 0; }
-    .muted{ color:var(--muted); }
+    p{ margin: 0 0 var(--space-2); }
+    em{ font-style: italic; }
+
+    /* ---- Links & focus --------------------------------------------------- */
+    a{
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-color: var(--link-underline);
+      text-underline-offset: 2px;
+      text-decoration-thickness: .08em;
+      transition: text-decoration-color .15s ease, color .15s ease;
+    }
+    a:hover{ text-decoration-color: currentColor; }
+    a:focus-visible{
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ---- Lists / chips --------------------------------------------------- */
+    .inline-list{
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1rem;
+    }
+
+    /* ---- Cards for project items ---------------------------------------- */
+    .card{
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-2);
+      margin: var(--space-2) 0;
+    }
+    .card strong a{ text-decoration: none; }
+    .card strong a:hover{ text-decoration: underline; }
+
+    /* ---- Section dividers ------------------------------------------------ */
+    .divider{
+      height:1px; background: var(--border);
+      margin: var(--space-4) 0;
+      border-radius: 1px;
+    }
+
+    /* ---- Footer ---------------------------------------------------------- */
     footer{
-      margin-top:3rem;
-      padding-top:1.5rem;
-      border-top:1px solid var(--border);
-      font-size:0.95rem;
-      color:var(--muted);
+      margin-top: var(--space-5);
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .95rem;
+      display:flex; justify-content: space-between; gap:1rem; flex-wrap:wrap;
     }
-    .inline-list a{ margin-right:0.75rem; }
-    .now{ margin-top:0.5rem; }
+
+    /* ---- Motion preferences --------------------------------------------- */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; }
+    }
+
+    /* ---- Small nicety for very wide screens ----------------------------- */
+    @media (min-width: 1100px){
+      .wrap{ padding-top: 12vh; }
+    }
   </style>
 </head>
+
 <body>
-  <main class="wrap" itemscope itemtype="https://schema.org/Person">
-    <h1 itemprop="name">James Simpson</h1>
+  <a href="#content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <main id="content" class="wrap" itemscope itemtype="https://schema.org/Person">
+    <header>
+      <h1 itemprop="name">James Simpson</h1>
+      <p style="margin-top:-.25rem;color:var(--muted)">Builder &amp; investor in crypto. Writing on technology, geopolitics, and power.</p>
+    </header>
 
     <section aria-labelledby="intro">
-      <p><strong>Hi, I’m James — I’m a builder and investor in crypto.</strong></p>
-      <p>I’m fascinated by how systems of value and ownership evolve, and how technology can expand freedom, creativity, and trust in the digital age. I believe crypto can make the internet and finance more private, sovereign, transparent, and inclusive.</p>
-      <p>I’m currently based in Paris, where I completed a master’s in International Security at <em>Sciences Po</em>. My studies focused on conflict and war, and I spent six months with <em>UNESCO</em> researching AI bias. I also contribute to the <em>Spykman Centre</em>, where I write on geopolitics, technology, and the shifting architecture of global power.</p>
-      <p>Previously, I founded and sold <em>mStable</em>, an early DeFi protocol built in Berlin, and have since invested in over twenty early-stage ventures across crypto and frontier technology.</p>
+      <p><strong>I build and invest in technologies that expand freedom and trust.</strong></p>
+      <p>I’m fascinated by how systems of value and ownership evolve. I believe crypto can make the internet and finance more private, sovereign, transparent, and inclusive.</p>
+      <p>I’m based in Paris, where I completed a master’s in International Security at <em>Sciences&nbsp;Po</em> and worked with <em>UNESCO</em> on AI bias. I also write with the <em>Spykman Centre</em> on geopolitics, technology, and the shifting architecture of global power.</p>
+      <p>Previously I founded and sold <em>mStable</em>, an early DeFi protocol built in Berlin, and have since invested in 20+ early-stage ventures across crypto and frontier tech.</p>
       <p>Outside of work, I love acting and the mountains.</p>
     </section>
 
+    <div class="divider" role="separator" aria-hidden="true"></div>
+
     <section aria-labelledby="investments">
       <h2 id="investments">Select Investments</h2>
-      <p>
-        <a href="https://www.morpho.org" target="_blank" rel="noopener">Morpho</a> ·
-        <a href="https://chaoslabs.xyz" target="_blank" rel="noopener">Chaos Labs</a> ·
-        <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> ·
-        <a href="https://maple.finance" target="_blank" rel="noopener">Maple</a> ·
-        <a href="https://biconomy.io" target="_blank" rel="noopener">Biconomy</a> ·
-        <a href="https://connext.network" target="_blank" rel="noopener">Connext</a> ·
-        <a href="https://chainflip.io" target="_blank" rel="noopener">Chainflip</a> ·
-        <a href="https://sanctum.so" target="_blank" rel="noopener">Sanctum</a> ·
-        <a href="https://bullet.xyz" target="_blank" rel="noopener">Bullet</a> ·
+      <p class="inline-list" style="margin:0">
+        <a href="https://www.morpho.org" target="_blank" rel="noopener">Morpho</a>
+        <a href="https://chaoslabs.xyz" target="_blank" rel="noopener">Chaos Labs</a>
+        <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a>
+        <a href="https://maple.finance" target="_blank" rel="noopener">Maple</a>
+        <a href="https://biconomy.io" target="_blank" rel="noopener">Biconomy</a>
+        <a href="https://connext.network" target="_blank" rel="noopener">Connext</a>
+        <a href="https://chainflip.io" target="_blank" rel="noopener">Chainflip</a>
+        <a href="https://sanctum.so" target="_blank" rel="noopener">Sanctum</a>
+        <a href="https://bullet.xyz" target="_blank" rel="noopener">Bullet</a>
         <a href="https://prepo.io" target="_blank" rel="noopener">prePO</a>
       </p>
     </section>
 
     <section aria-labelledby="projects">
       <h2 id="projects">Projects</h2>
-      <ul>
-        <li>
+
+      <article class="card">
+        <p>
           <strong><a href="https://fragosti.com/projects/split/" target="_blank" rel="noopener">Split</a></strong> —
           A protocol for splitting tokens into constituent components. Born from conversations with Francesco Agosti, Richard Galvin, and Alex Erikstrup that became a whitepaper, a prototype, and a usable product. The MVP was built during the three-week ETHGlobal hackathon and won the Compound sponsor prize.
-        </li>
-        <li>
+        </p>
+      </article>
+
+      <article class="card">
+        <p>
           <strong><a href="https://www.mstable.com/" target="_blank" rel="noopener">mStable</a></strong> —
-          An early DeFi protocol conceived at Apollo Capital with Henrik Andersson to address fragmentation and risk in stablecoins. Built products to unify stable assets, generate yield, and enhance systemic resilience. Acquired via a community-led decentralised auction; now continues under
+          Conceived at Apollo Capital with Henrik Andersson to address fragmentation and risk in stablecoins. Built products to unify stable assets, generate yield, and enhance systemic resilience. Acquired via a community-led decentralised auction; now continues under
           <a href="https://www.dhedge.org/" target="_blank" rel="noopener">dHEDGE</a>, building on
           <a href="https://pendle.finance/" target="_blank" rel="noopener">Pendle</a>.
-        </li>
-      </ul>
+        </p>
+      </article>
     </section>
 
     <section aria-labelledby="writing">
       <h2 id="writing">Writing &amp; Research</h2>
-      <p>I write about the social and geopolitical implications of technology, the ethics of innovation, and the shifting landscape of global power. My research focuses on crypto and AI, and I’ve recently written on China’s strategic culture, the moral logic of restraint in war, and the feedback loops between U.S. foreign policy and domestic democracy.</p>
-      <p>Please be in touch if you’d like to discuss any of these topics.</p>
+      <p>I write about the social and geopolitical implications of technology, the ethics of innovation, and the shifting landscape of global power. Recent work touches on China’s strategic culture, the moral logic of restraint in war, and how U.S. foreign policy practices feed back into domestic democracy.</p>
+      <p class="inline-list">
+        <!-- Add real links when ready -->
+        <a href="#" aria-disabled="true">On AI &amp; society (soon)</a>
+        <a href="#" aria-disabled="true">Restraint in War (soon)</a>
+        <a href="#" aria-disabled="true">China’s Grand Strategy (soon)</a>
+      </p>
     </section>
 
     <section aria-labelledby="contact">
       <h2 id="contact">Contact</h2>
       <p class="inline-list">
-        <a href="mailto:hello@jamessimpson.xyz" itemprop="email">hello@jamessimpson.xyz</a> ·
-        <a href="https://www.linkedin.com/in/james-simpson-659ba02a7/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://x.com/Quixoticsky" target="_blank" rel="noopener">X</a> ·
+        <a href="mailto:hello@jamessimpson.xyz" itemprop="email">hello@jamessimpson.xyz</a>
+        <a href="https://www.linkedin.com/in/james-simpson-659ba02a7/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/Quixoticsky" target="_blank" rel="noopener">X</a>
         <a href="https://substack.com/@byhenryshaw" target="_blank" rel="noopener">Substack</a>
       </p>
     </section>
 
     <footer>
-      <span class="muted">© <span id="year"></span> James Simpson</span>
+      <span>© <span id="year"></span> James Simpson</span>
+      <span style="color:var(--muted)">Built with clean HTML &amp; CSS.</span>
     </footer>
   </main>
 
   <script>
-    // tiny nicety for the footer year
+    // Footer year & small enhancement for disabled placeholders
     document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('[aria-disabled="true"]').forEach(a=>{
+      a.style.pointerEvents='none';
+      a.style.opacity='.6';
+      a.style.textDecoration='none';
+    });
   </script>
 </body>
 </html>
