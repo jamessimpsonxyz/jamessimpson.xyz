@@ -1,8 +1,10 @@
 module.exports = function (eleventyConfig) {
+  // keep your custom domain
   eleventyConfig.addPassthroughCopy("CNAME");
+  // optional assets folder
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
-  // FIXED: input dir is already "src", so don’t prefix with "src/"
+  // IMPORTANT: no "src/" prefix here (input dir is already src)
   eleventyConfig.addCollection("posts", (collection) =>
     collection.getFilteredByGlob("posts/**/*.md").sort((a, b) => b.date - a.date)
   );
