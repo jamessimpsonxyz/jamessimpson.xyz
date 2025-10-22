@@ -1,0 +1,8 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <h1>{{ title }}</h1>
+  <p class="muted">{{ page.date | date('yyyy-LL-dd') }}</p>
+  {{ content | safe }}
+</article>
