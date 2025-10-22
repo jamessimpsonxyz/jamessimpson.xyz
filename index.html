@@ -172,6 +172,14 @@ section + section > h2:first-child { margin-top: 0; }
   border-top: none;
   padding-top: 0;
 }    
+
+  /* Fine-tune spacing between Investments → Projects */
+#investments + #projects {
+  border-top: none;
+  padding-top: var(--s2); /* add a small breathing gap */
+  margin-top: var(--s2);
+}
+
   </style>
 </head>
 <body>
@@ -212,10 +220,8 @@ section + section > h2:first-child { margin-top: 0; }
 
         <li>
           <strong><a href="https://www.mstable.com/" target="_blank" rel="noopener">mStable</a></strong> —
-          Conceived at Apollo Capital with Henrik Andersson to tackle fragmentation and risk in stablecoins,
-          <em>mStable</em> became one of the first DeFi protocols to unify stable assets, generate yield,
-          and enhance systemic resilience. Backed by leading funds and angels, it was later acquired
-          through a community-run decentralised auction and now lives on under
+          Conceived at Apollo Capital with Henrik Andersson to address early stablecoin fragmentation, mStable pioneered one of the first architectures to unify stable assets and generate on-chain yield. Backed by leading funds and angels, it was later acquired
+          through a token based decentralised auction and now lives on under
           <a href="https://www.dhedge.org/" target="_blank" rel="noopener">dHEDGE</a>,
           developing a new generation of products on
           <a href="https://pendle.finance/" target="_blank" rel="noopener">Pendle</a>.
