@@ -152,6 +152,26 @@
     @media (min-width: 1100px){
       .wrap{ padding-top: 14vh; }
     }
+/* ===== Spacing fixes (put at the end) ===== */
+
+/* 1) Remove outside margins on sections; control spacing only with the divider rule */
+section { margin: 0; }
+
+/* 2) Make the divider lighter and closer */
+section + section {
+  padding-top: var(--s3);        /* was var(--s4) */
+  border-top: 1px solid var(--border);
+}
+
+/* 3) Kill the extra gap where the heading would add top margin */
+h2 { margin: 0 0 var(--s2); }     /* no top margin anywhere */
+section + section > h2:first-child { margin-top: 0; }
+
+/* 4) Keep Investments → Projects tight (no divider / no extra padding) */
+#investments + #projects {
+  border-top: none;
+  padding-top: 0;
+}    
   </style>
 </head>
 <body>
