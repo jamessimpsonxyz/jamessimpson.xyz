@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or site.title }}</title>
+  <meta name="description" content="{{ site.description or '' }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <style>
+    :root { --max: 760px; }
+    body { margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    main { max-width: var(--max); margin: 64px auto; padding: 0 20px; }
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; font-weight: 600; }
+    .muted { color: #666; font-size: .95em; }
+    .post-list article { padding: 16px 0; border-bottom: 1px solid #eee; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { margin-bottom: 24px; }
+    nav a { margin-right: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/blog/">Writing</a>
+    </nav>
+    {{ content | safe }}
+  </main>
+</body>
+</html>
